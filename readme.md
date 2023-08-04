@@ -1,4 +1,4 @@
-# install dependancies form package.json using npm -i
+ install dependancies form package.json using npm -i
 # if you run the code it will connect to your local mongodb server (mongodb required)
 # you can create users with role seller or customer using end point "http://localhost:3000/api/users/signup". do a POST request with 'username , password,role' fields inthe body.
 # you can login with requesting a POST request to "http://localhost:3000/api/users/login" with fields "username,password".
