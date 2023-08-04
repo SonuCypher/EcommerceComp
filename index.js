@@ -3,6 +3,7 @@ const app = express();
 const { default: mongoose } = require("mongoose");
 const cookieParser = require("cookie-parser");
 const productRoutes = require('./routes/productRoutes')
+const userRoutes = require('./routes/userRoutes')
 
 
 
@@ -15,6 +16,7 @@ mongoose.connect("mongodb://localhost:27017/EcommerceComp")
 app.use(express.json());
 app.use(cookieParser());
 
+app.use('/api/users',userRoutes)
 app.use('/api/categories',productRoutes)
 
 

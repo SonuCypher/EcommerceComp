@@ -1,4 +1,4 @@
-const { Categories, Products } = require("../model/products");
+const { Categories, Products, ProductDetail } = require("../model/products");
 
 module.exports.getCategories = async (req,res)=>{
     try {
@@ -41,3 +41,24 @@ module.exports.addProducts = async (req,res)=>{
         res.status(409).json({message: error.message})
     }
 }
+
+ module.exports.getProductDetails = async(req,res)=>{
+    const {prodId}=req.params
+    try {
+        const productdetails = await ProductDetail.findOne({productId:prodId})
+        res.json(productdetails.details) 
+    } catch (error) {
+        res.status(409).json({message: error.message})
+    }
+ }
+ module.exports.addProductDetails = async(req,res)=>{
+    const {prodId} = req.params
+    const productdetail = req.body
+    const newProductDetail = new ProductDetail({...productdetail, productId: prodId})
+    try {
+        await newProductDetail.save()
+        res.status(200).json({ message: 'Successfully created productDetails' })
+    } catch (error) {
+        res.status(409).json({message: error.message})
+    }
+ }

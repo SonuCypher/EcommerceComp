@@ -28,6 +28,17 @@ const categoriesSchema = mongoose.Schema({
         required:true
     }
  })
+ const productDetailSchema = mongoose.Schema({
+    details:{
+        type:String,
+        required:true
+    },
+    productId:{
+        type:String,
+        required:true
+    }
+ })
 
 module.exports.Categories = mongoose.model('Categories',categoriesSchema)
 module.exports.Products = mongoose.model('Products',productsSchema)
+module.exports.ProductDetail = mongoose.model('ProductDetail',productDetailSchema)
